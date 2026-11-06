@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<!-- في بداية ملف index.html، بعد العنوان الرئيسي -->
-<div class="flex justify-end items-center gap-4 py-4">
-    <a href="https://zanzache1.github.io/admin-panel/admin.html" class="btn btn-admin" target="_blank">
-        <i class="fas fa-cog text-white"></i> لوحة التحكم
-    </a>
-</div>
-
-
-
-
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -320,7 +310,7 @@
                 </div>
                 <!-- Banner Image Display -->
                 <div class="relative w-full h-52 rounded-xl overflow-hidden border border-amber-500/40 shadow-inner group">
-                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80" alt="معرض صور المفتشية" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <img id="galleryImageDisplay" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80" alt="معرض صور المفتشية" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3">
                         <span class="text-xs text-amber-200 font-medium">صور من اللقاءات والندوات التربوية بدائرة حد الصحاري</span>
                     </div>
@@ -355,7 +345,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
                 <!-- Platform 1: الإسناد التربوي -->
-                <a href="https://zanzache1.github.io/isnaadtarbaoui/" target="_blank" class="portal-card group">
+                <a href="https://zanzache1.github.io/isnaadtarbaoui/" data-site-link="isnaad" target="_blank" rel="noopener noreferrer" class="portal-card group">
                     <div class="icon-wrapper">
                         <i class="fa-solid fa-landmark"></i>
                     </div>
@@ -369,7 +359,7 @@
                 </a>
 
                 <!-- Platform 2: التأطير التربوي -->
-                <a href="https://med27771.github.io/zanzache1/" target="_blank" class="portal-card group">
+                <a href="https://med27771.github.io/zanzache1/" data-site-link="taateer" target="_blank" rel="noopener noreferrer" class="portal-card group">
                     <div class="icon-wrapper">
                         <i class="fa-solid fa-user-tie"></i>
                     </div>
@@ -383,7 +373,7 @@
                 </a>
 
                 <!-- Platform 3: الترقية -->
-                <a href="https://zanzache1.github.io/tarkia/" target="_blank" class="portal-card group">
+                <a href="https://zanzache1.github.io/tarkia/" data-site-link="tarkia" target="_blank" rel="noopener noreferrer" class="portal-card group">
                     <div class="icon-wrapper">
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
@@ -397,7 +387,7 @@
                 </a>
 
                 <!-- Platform 4: امتحان الترسيم -->
-                <a href="https://zanzache1.github.io/tarssim/" target="_blank" class="portal-card group">
+                <a href="https://zanzache1.github.io/tarssim/" data-site-link="tarssim" target="_blank" rel="noopener noreferrer" class="portal-card group">
                     <div class="icon-wrapper">
                         <i class="fa-solid fa-certificate"></i>
                     </div>
@@ -447,12 +437,13 @@
                 </div>
 
                 <!-- Newsletter Subscription Form -->
-                <form onsubmit="alert('تم تسجيل بريدكم بنجاح!'); return false;" class="space-y-3 pt-2">
+                <form id="newsletterForm" class="space-y-3 pt-2">
                     <label class="block text-xs font-bold text-amber-300">الاشتراك عبر البريد الإلكتروني:</label>
                     <div class="flex gap-2">
-                        <input type="email" placeholder="أدخل بريدك الإلكتروني..." required class="form-input">
+                        <input type="email" name="email" autocomplete="email" placeholder="أدخل بريدك الإلكتروني..." required maxlength="254" class="form-input">
                         <button type="submit" class="btn-submit whitespace-nowrap">انضمام</button>
                     </div>
+                    <p data-form-status class="text-sm mt-2" role="status" aria-live="polite"></p>
                 </form>
             </div>
 
@@ -462,24 +453,24 @@
                     <i class="fa-solid fa-comment-dots text-amber-400"></i> اتصل بنا / تقديم اقتراح
                 </h3>
                 <p class="text-white/80 text-sm">
-                    تصل جميع الرسائل والاقتراحات مباشرة إلى صاحب الموقع الأستاذ والمفتش بلعدل محمد.
+                    تُحفظ الرسائل والاقتراحات في لوحة المدير ليتم الاطلاع عليها والرد عليها.
                 </p>
 
-                <form onsubmit="alert('شكراً لك! تم إرسال اقتراحك/رسالتك بنجاح إلى صاحب الموقع.'); return false;" class="space-y-4">
+                <form id="contactForm" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-amber-200 mb-1">الاسم واللقب:</label>
-                            <input type="text" placeholder="اسمك الكريم..." required class="form-input">
+                            <input type="text" name="name" autocomplete="name" placeholder="اسمك الكريم..." required maxlength="120" class="form-input">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-amber-200 mb-1">البريد الإلكتروني:</label>
-                            <input type="email" placeholder="email@example.com" required class="form-input">
+                            <input type="email" name="email" autocomplete="email" placeholder="email@example.com" required maxlength="254" class="form-input">
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-xs font-semibold text-amber-200 mb-1">نوع الموضوع:</label>
-                        <select class="form-input bg-slate-900">
+                        <select name="type" class="form-input bg-slate-900">
                             <option value="suggestion">تقديم اقتراح تطويري للموقع</option>
                             <option value="contact">استفسار أو تواصل إداري</option>
                             <option value="issue">الإبلاغ عن مشكلة فنية</option>
@@ -488,7 +479,7 @@
 
                     <div>
                         <label class="block text-xs font-semibold text-amber-200 mb-1">نص الرسالة أو الاقتراح:</label>
-                        <textarea rows="3" placeholder="اكتب اقتراحك أو رسالتك هنا..." required class="form-input"></textarea>
+                        <textarea name="message" rows="3" placeholder="اكتب اقتراحك أو رسالتك هنا..." required maxlength="3000" class="form-input"></textarea>
                     </div>
 
                     <button type="submit" class="btn-submit w-full flex items-center justify-center gap-2 text-base">
@@ -518,12 +509,6 @@
         </div>
     </footer>
 
-    <!-- Auto Year Script -->
-    <script>
-        // Automatic Year script starting from 2026
-        const yearSpan = document.getElementById('copyrightYear');
-        const currentYear = new Date().getFullYear();
-        yearSpan.textContent = currentYear >= 2026 ? currentYear : 2026;
-    </script>
+    <script type="module" src="./site.js"></script>
 </body>
 </html>
